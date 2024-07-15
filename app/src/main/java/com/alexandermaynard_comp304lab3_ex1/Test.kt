@@ -4,6 +4,7 @@ import android.health.connect.datatypes.units.Temperature
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 
@@ -17,5 +18,5 @@ data class Test(
     @NonNull @ColumnInfo(name = "bpl") val bHP: Boolean,
     @NonNull @ColumnInfo(name = "temperature") val temperature: Temperature,
     @NonNull @ColumnInfo(name = "blood_type") val bloodType: String,
-    @NonNull @ColumnInfo(name = "blood_type") val bloodSugarLevel: Double
+    @NonNull @ColumnInfo(name = "blood_sugar_level") val bloodSugarLevel: Double
 )
