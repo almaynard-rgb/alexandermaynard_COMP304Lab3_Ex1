@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--Login page option menu item-->
+    <item
+        android:id="@+id/login_page_option"
+        android:title="@string/login_page_option_text">
+    </item>
+    <!--Patients page option menu item-->
+    <item
+        android:id="@+id/patients_page_option"
+        android:title="@string/patients_page_option_text">
+    </item>
+    <!--Tests page option menu item-->
+    <item
+        android:id="@+id/tests_page_option"
+        android:title="@string/tests_page_option_text">
+    </item>
+    <!--View Tests page option menu item-->
+    <item
+        android:id="@+id/view_tests_info_page_option"
+        android:title="@string/view_tests_info_page_option_text">
+    </item>
+    <!--Update Patient Info option menu item-->
+    <item
+        android:id="@+id/update_patient_page_option"
+        android:title="@string/update_patient_page_option_text">
+    </item>
+</menu>

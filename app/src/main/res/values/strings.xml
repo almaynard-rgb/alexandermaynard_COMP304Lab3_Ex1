@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">alexandermaynard_COMP304Lab3_Ex1</string>
+    <string name="app_name">Nurse Log Application</string>
+    <string name="login_page_option_text">Login</string>
+    <string name="patients_page_option_text">Patients</string>
+    <string name="tests_page_option_text">Tests</string>
+    <string name="view_tests_info_page_option_text">View Tests</string>
+    <string name="update_patient_page_option_text">Update Patient Info</string>
+    <string name="app_logo_text">Cartoon stethoscope image</string>
+    <string name="to_login_page_btn_text">Go to login</string>
+    <string name="login_btn_text">Login</string>
+    <string name="login_title">Nurse Login</string>
+    <string name="login_username_hint">Enter your username</string>
+    <string name="login_password_hint">Enter your password</string>
 </resources>

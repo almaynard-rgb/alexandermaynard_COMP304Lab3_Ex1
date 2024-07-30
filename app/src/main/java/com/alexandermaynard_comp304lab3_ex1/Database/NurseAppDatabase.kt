@@ -1,9 +1,15 @@
-package com.alexandermaynard_comp304lab3_ex1
+package com.alexandermaynard_comp304lab3_ex1.Database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.alexandermaynard_comp304lab3_ex1.Database.nurse.NurseDao
+import com.alexandermaynard_comp304lab3_ex1.Database.patient.PatientDao
+import com.alexandermaynard_comp304lab3_ex1.Database.test.TestDao
+import com.alexandermaynard_comp304lab3_ex1.Database.nurse.Nurse
+import com.alexandermaynard_comp304lab3_ex1.Database.patient.Patient
+import com.alexandermaynard_comp304lab3_ex1.Database.test.Test
 
 /*NOTE THE CONTENTS OF THIS FILE ARE A MODIFIED VERSION FROM THE BusSchedule project from the
 Centennial College COMP304 section 401 class examples as well as the Android Studio Website.*/

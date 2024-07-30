@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login">
+
+    <!--Title for the activity-->
+    <TextView
+        android:id="@+id/login_title"
+        style="@style/title_text"
+        android:text="@string/login_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--Edit text for the nurse to enter their username-->
+    <EditText
+        android:id="@+id/nurse_username_entry"
+        style="@style/edit_text"
+        android:inputType="numberPassword"
+        android:layout_height="48dp"
+        android:autofillHints="enter your username"
+        android:hint="@string/login_username_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_title" />
+
+    <!--Edit text for the nurse to enter their username-->
+    <EditText
+        android:id="@+id/nurse_password_entry"
+        style="@style/edit_text"
+        android:layout_height="48dp"
+        android:autofillHints="enter your password"
+        android:hint="@string/login_password_hint"
+        android:inputType="textPassword"
+        android:textColor="@color/dark_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nurse_username_entry" />
+
+
+    <!--Button to to login-->
+    <Button
+        android:id="@+id/login_btn"
+        style="@style/regular_button"
+        android:text="@string/login_btn_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
