@@ -1,15 +1,21 @@
 package com.alexandermaynard_comp304lab3_ex1
-
-import android.content.Intent
+import android.app.Activity
+import android.app.Application
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.room.Room
 import com.alexandermaynard_comp304lab3_ex1.Database.NurseAppDatabase
+import com.alexandermaynard_comp304lab3_ex1.Database.nurse.Nurse
+import com.alexandermaynard_comp304lab3_ex1.Database.nurse.NurseDao
+import com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.NurseViewModel
+import com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.NurseViewModelFactory
+
+//private val viewModel: NurseViewModel = NurseViewModelFactory().database.nurseDao()
+
 
 class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,5 +34,4 @@ class Login : AppCompatActivity() {
         //db.nurseDao().insertNurse(nurse)
         db.nurseDao().getNurseInfo(12345, "hello123")
     }
-    
 }

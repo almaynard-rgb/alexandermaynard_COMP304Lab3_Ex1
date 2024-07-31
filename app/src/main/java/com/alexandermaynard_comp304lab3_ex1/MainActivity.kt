@@ -58,8 +58,8 @@ class MainActivity : AppCompatActivity() {
             //when patients page option is pressed
             R.id.patients_page_option -> {
                 //go to the SemiDetachedHome Screen
-                //val nextScreenIntent = Intent(this, SemiDetachedHome::class.java)
-                //startActivity(nextScreenIntent)
+                val nextScreenIntent = Intent(this, Patient::class.java)
+                startActivity(nextScreenIntent)
                 return true
             }
             //when tests page option is pressed

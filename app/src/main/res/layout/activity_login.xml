@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/login_title"
         style="@style/title_text"
-        android:text="@string/login_title"
+        android:text="@string/login_page_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

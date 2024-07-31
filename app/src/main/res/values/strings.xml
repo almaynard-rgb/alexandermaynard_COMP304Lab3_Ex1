@@ -8,7 +8,19 @@
     <string name="app_logo_text">Cartoon stethoscope image</string>
     <string name="to_login_page_btn_text">Go to login</string>
     <string name="login_btn_text">Login</string>
-    <string name="login_title">Nurse Login</string>
+    <string name="login_page_title">NURSE LOGIN</string>
+    <string name="patient_title">PATIENT</string>
+    <string name="search_patient_title">Search a patient</string>
+    <string name="enter_patient_title">Enter a new patient</string>
+    <string name="patient_result_text_prompt">Patient Result:</string>
     <string name="login_username_hint">Enter your username</string>
+    <string name="patient_id_hint">Enter the patient ID</string>
+    <string name="patient_firstname_hint">Enter the patient firstname</string>
+    <string name="patient_lastname_hint">Enter the patient lastname</string>
+    <string name="patient_department_hint">Enter the patient department</string>
+    <string name="patient_nurse_id_hint">Enter the ID for the patient nurse</string>
+    <string name="patient_room_hint">Enter the patient room</string>
     <string name="login_password_hint">Enter your password</string>
+    <string name="submit_btn_text">Submit</string>
+    <string name="search_btn_text">Search</string>
 </resources>

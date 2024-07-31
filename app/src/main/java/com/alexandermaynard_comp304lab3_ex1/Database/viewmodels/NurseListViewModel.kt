@@ -10,7 +10,7 @@ class NurseViewModel(private val nurseDao: NurseDao): ViewModel() {
     fun getNurse(username: Int, password: String): Flow<List<Nurse>> = nurseDao.getNurseInfo(username, password)
 }
 
-class NurseListViewModelFactory(
+class NurseViewModelFactory(
     private val nurseDao: NurseDao
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
