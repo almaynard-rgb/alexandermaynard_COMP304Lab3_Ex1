@@ -1,26 +1,49 @@
 <resources>
+    <!--app specific strings-->
     <string name="app_name">Nurse Log Application</string>
+
+    <!--menu specific strings-->
     <string name="login_page_option_text">Login</string>
     <string name="patients_page_option_text">Patients</string>
     <string name="tests_page_option_text">Tests</string>
     <string name="view_tests_info_page_option_text">View Tests</string>
     <string name="update_patient_page_option_text">Update Patient Info</string>
+
+    <!--main specific strings-->
     <string name="app_logo_text">Cartoon stethoscope image</string>
     <string name="to_login_page_btn_text">Go to login</string>
-    <string name="login_btn_text">Login</string>
+
+    <!--login specific strings-->
     <string name="login_page_title">NURSE LOGIN</string>
+    <string name="login_btn_text">Login</string>
+    <string name="login_username_hint">Enter your username</string>
+    <string name="login_password_hint">Enter your password</string>
+
+    <!--patient specific strings-->
     <string name="patient_title">PATIENT</string>
     <string name="search_patient_title">Search a patient</string>
     <string name="enter_patient_title">Enter a new patient</string>
     <string name="patient_result_text_prompt">Patient Result:</string>
-    <string name="login_username_hint">Enter your username</string>
-    <string name="patient_id_hint">Enter the patient ID</string>
     <string name="patient_firstname_hint">Enter the patient firstname</string>
     <string name="patient_lastname_hint">Enter the patient lastname</string>
     <string name="patient_department_hint">Enter the patient department</string>
     <string name="patient_nurse_id_hint">Enter the ID for the patient nurse</string>
-    <string name="patient_room_hint">Enter the patient room</string>
-    <string name="login_password_hint">Enter your password</string>
+    <string name="patient_room_hint">Enter the room for the patient</string>
+
+    <!--test page specific strings-->
+    <string name="test_page_title">Tests</string>
+    <string name="test_id_hint">Enter the test ID</string>
+    <string name="test_patient_id_hint">Patient for the test (patient ID)</string>
+    <string name="test_nurse_id_hint">Nurse assigned(nurse ID)</string>
+    <string name="patient_bpl_hint">Enter the patient BPL</string>
+    <string name="patient_bhp_hint">Enter the patient BHP</string>
+    <string name="patient_temp_hint">Enter the patient temperature</string>
+    <string name="patient_blood_type_hint">Enter the patient blood type</string>
+    <string name="patient_blood_sugar_level_hint">Enter the patient blood sugar level</string>
+
+    <!--multi-use strings-->
+    <string name="patient_id_hint">Enter the patient ID</string>
     <string name="submit_btn_text">Submit</string>
+    <string name="enter_data_btn_text">Enter Data</string>
     <string name="search_btn_text">Search</string>
 </resources>

@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="6dp"
         android:autofillHints="enter the patient's ID"
         android:hint="@string/patient_id_hint"
         android:inputType="number"
@@ -45,9 +45,7 @@
     <Button
         android:id="@+id/search_patient_btn"
         style="@style/regular_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="56dp"
         android:text="@string/search_btn_text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,9 +54,6 @@
     <TextView
         android:id="@+id/enter_patient_title"
         style="@style/sub_title_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
         android:text="@string/enter_patient_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,9 +62,6 @@
     <TextView
         android:id="@+id/patient_result_title"
         style="@style/regular_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="@string/patient_result_text_prompt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,9 +70,6 @@
     <TextView
         android:id="@+id/patient_result"
         style="@style/regular_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,10 +79,6 @@
     <EditText
         android:id="@+id/patient_id_entry"
         style="@style/edit_text"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="16dp"
         android:autofillHints="enter the patient's id"
         android:hint="@string/patient_id_hint"
         android:inputType="number"
@@ -103,10 +88,6 @@
     <EditText
         android:id="@+id/patient_firstname_entry"
         style="@style/edit_text"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="6dp"
         android:autofillHints="enter the patient's firstname"
         android:hint="@string/patient_firstname_hint"
         android:inputType="text"
@@ -116,10 +97,6 @@
     <EditText
         android:id="@+id/patient_lastname_entry"
         style="@style/edit_text"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="6dp"
         android:autofillHints="enter the patient's lastname"
         android:hint="@string/patient_lastname_hint"
         android:inputType="text"
@@ -129,10 +106,6 @@
     <EditText
         android:id="@+id/patient_department_entry"
         style="@style/edit_text"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="6dp"
         android:autofillHints="enter the patient's department"
         android:hint="@string/patient_department_hint"
         android:inputType="text"
@@ -142,33 +115,24 @@
     <EditText
         android:id="@+id/patient_nurse_id"
         style="@style/edit_text"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="6dp"
         android:autofillHints="enter the ID for the patient's nurse"
         android:hint="@string/patient_nurse_id_hint"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/patient_department_entry" />
+
     <EditText
         android:id="@+id/patient_room_entry"
         style="@style/edit_text"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="26dp"
         android:autofillHints="enter the room number of the patient"
         android:hint="@string/patient_room_hint"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patient_room_entry" />
+        app:layout_constraintTop_toBottomOf="@+id/patient_nurse_id" />
 
     <Button
         android:id="@+id/submit_btn"
         style="@style/regular_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/submit_btn_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

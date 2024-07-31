@@ -7,4 +7,75 @@
     android:layout_height="match_parent"
     tools:context=".Test">
 
+    <TextView
+        android:id="@+id/test_page_title"
+        style="@style/title_text"
+        android:text="@string/test_page_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/test_id_entry"
+        style="@style/edit_text"
+        android:layout_marginTop="56dp"
+        android:autofillHints="enter the test's id"
+        android:hint="@string/patient_id_hint"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_page_title" />
+
+    <EditText
+        android:id="@+id/patient_id_entry"
+        style="@style/edit_text"
+        android:autofillHints="enter the patient's id"
+        android:hint="@string/test_patient_id_hint"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_id_entry" />
+
+    <EditText
+        android:id="@+id/nurse_id_entry"
+        style="@style/edit_text"
+        android:autofillHints="enter the nurse's id"
+        android:hint="@string/test_nurse_id_hint"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patient_id_entry" />
+
+    <EditText
+        android:id="@+id/patient_bpl_entry"
+        style="@style/edit_text"
+        android:autofillHints="enter the patient's department"
+        android:hint="@string/patient_bpl_hint"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nurse_id_entry" />
+
+    <EditText
+        android:id="@+id/patient_bhp_entry"
+        style="@style/edit_text"
+        android:autofillHints="enter the ID for the patient's nurse"
+        android:hint="@string/patient_bhp_hint"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patient_bpl_entry" />
+
+    <EditText
+        android:id="@+id/patient_temperature_entry"
+        style="@style/edit_text"
+        android:autofillHints="enter the room number of the patient"
+        android:hint="@string/patient_temp_hint"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patient_bhp_entry" />
+
+    <Button
+        android:id="@+id/enter_data_btn"
+        style="@style/regular_button"
+        android:text="@string/enter_data_btn_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
