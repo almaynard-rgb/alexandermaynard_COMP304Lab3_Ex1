@@ -12,6 +12,7 @@
         android:id="@+id/main_image_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="-100dp"
         android:contentDescription="@string/app_logo_text"
         android:cropToPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"

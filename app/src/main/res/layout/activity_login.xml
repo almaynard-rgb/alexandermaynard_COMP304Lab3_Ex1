@@ -17,21 +17,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!--Edit text for the nurse to enter their username-->
-    <EditText
-        android:id="@+id/nurse_username_entry"
-        style="@style/edit_text"
-        android:inputType="numberPassword"
-        android:layout_height="48dp"
-        android:autofillHints="enter your username"
-        android:hint="@string/login_username_hint"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_title" />
 
     <!--Edit text for the nurse to enter their username-->
     <EditText
+        android:id="@+id/nurse_username_entry"
+        style="@style/center_edit_text"
+        android:layout_height="48dp"
+        android:layout_marginTop="56dp"
+        android:autofillHints="enter your username"
+        android:hint="@string/login_username_hint"
+        android:inputType="numberPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_title" />
+
+    <EditText
         android:id="@+id/nurse_password_entry"
-        style="@style/edit_text"
+        style="@style/center_edit_text"
         android:layout_height="48dp"
         android:autofillHints="enter your password"
         android:hint="@string/login_password_hint"

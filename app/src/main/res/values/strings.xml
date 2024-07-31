@@ -19,10 +19,10 @@
     <string name="login_username_hint">Enter your username</string>
     <string name="login_password_hint">Enter your password</string>
 
-    <!--patient specific strings-->
+    <!--patient and update info specific strings-->
     <string name="patient_title">PATIENT</string>
-    <string name="search_patient_title">Search a patient</string>
-    <string name="enter_patient_title">Enter a new patient</string>
+    <string name="search_patient_title">Search a patient:</string>
+    <string name="enter_patient_title">Enter a new patient:</string>
     <string name="patient_result_text_prompt">Patient Result:</string>
     <string name="patient_firstname_hint">Enter the patient firstname</string>
     <string name="patient_lastname_hint">Enter the patient lastname</string>
@@ -46,4 +46,23 @@
     <string name="submit_btn_text">Submit</string>
     <string name="enter_data_btn_text">Enter Data</string>
     <string name="search_btn_text">Search</string>
+
+
+    <!--view test info specific strings-->
+    <string name="view_test_info_title_text">View Test Information</string>
+    <string name="search_patient_tests_title">Search for patient specific tests:</string>
+    <string name="search_patient_tests_results_title">Test Results:</string>
+
+    <!--update info specific strings-->
+    <string name="update_info_title">Update Patient Information</string>
+    <string name="find_patient_title">Find the patient to update:</string>
+    <string name="patient_found_title">Patient you want to update:</string>
+    <string name="update_patient_title">Update patient info:</string>
+    <string name="update_patient_id_hint">Update patient ID:</string>
+    <string name="update_patient_firstname_hint">Update the patient firstname</string>
+    <string name="update_patient_lastname_hint">Update the patient lastname</string>
+    <string name="update_patient_department_hint">Update the patient department</string>
+    <string name="update_patient_nurse_id_hint">Update the ID for the patient nurse</string>
+    <string name="update_patient_room_hint">Update the room for the patient</string>
+    <string name="update_btn_text">Update</string>
 </resources>

@@ -7,4 +7,67 @@
     android:layout_height="match_parent"
     tools:context=".ViewTestInfo">
 
+    <TextView
+        android:id="@+id/view_test_title"
+        style="@style/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/view_test_info_title_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/search_test_for_patient_title"
+        style="@style/sub_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:text="@string/search_patient_tests_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_test_title" />
+
+    <EditText
+        android:id="@+id/patient_id_search_entry"
+        style="@style/right_aligned_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="26dp"
+        android:autofillHints="enter the patient's ID"
+        android:hint="@string/patient_id_hint"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_test_for_patient_title" />
+
+    <Button
+        android:id="@+id/search_patient_btn"
+        style="@style/regular_button"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="56dp"
+        android:text="@string/search_btn_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_test_for_patient_title" />
+
+    <TextView
+        android:id="@+id/search_test_for_patient_results_title"
+        style="@style/sub_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:text="@string/search_patient_tests_results_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_patient_btn" />
+
+    <!--Recyclerview to display the desired tests for a patient-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/house_type_recycler_view"
+        style="@style/recycler_view_widget"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_test_for_patient_results_title" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

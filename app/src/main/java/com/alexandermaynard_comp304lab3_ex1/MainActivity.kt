@@ -9,10 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.room.Room
-import com.alexandermaynard_comp304lab3_ex1.Database.NurseAppDatabase
-import com.alexandermaynard_comp304lab3_ex1.Database.nurse.Nurse
-import kotlinx.coroutines.flow.collect
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,38 +47,38 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             //when login option is pressed
             R.id.login_page_option -> {
-                //go to the DetachedHome Screen
+                //go to the Login Screen
                 val nextScreenIntent = Intent(this, Login::class.java)
                 startActivity(nextScreenIntent)
                 return true
             }
             //when patients page option is pressed
             R.id.patients_page_option -> {
-                //go to the SemiDetachedHome Screen
+                //go to the Patient Screen
                 val nextScreenIntent = Intent(this, Patient::class.java)
                 startActivity(nextScreenIntent)
                 return true
             }
             //when tests page option is pressed
             R.id.tests_page_option -> {
-                //go to the CondominiumApartment Screen
-                //val nextScreenIntent = Intent(this, CondominiumApartment::class.java)
-                //startActivity(nextScreenIntent)
+                //go to the Test Screen
+                val nextScreenIntent = Intent(this, Test::class.java)
+                startActivity(nextScreenIntent)
                 return true
             }
             //when view tests info page option is pressed
             R.id.view_tests_info_page_option -> {
-                //go to the Townhouse Screen
-                // val nextScreenIntent = Intent(this, Townhouse::class.java)
-                //startActivity(nextScreenIntent)
+                //go to the ViewTestInfo Screen
+                val nextScreenIntent = Intent(this, ViewTestInfo::class.java)
+                startActivity(nextScreenIntent)
                 return true
             }
 
             //when update patient page option is pressed
             R.id.update_patient_page_option -> {
-                //go to the Townhouse Screen
-                //val nextScreenIntent = Intent(this, Townhouse::class.java)
-                //startActivity(nextScreenIntent)
+                //go to the Patient Screen
+                val nextScreenIntent = Intent(this, Patient::class.java)
+                startActivity(nextScreenIntent)
                 return true
             }
         }

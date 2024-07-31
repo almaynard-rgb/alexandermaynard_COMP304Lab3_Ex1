@@ -31,7 +31,7 @@
 
     <EditText
         android:id="@+id/patient_id_search"
-        style="@style/edit_text"
+        style="@style/right_aligned_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginStart="56dp"
@@ -78,7 +78,7 @@
 
     <EditText
         android:id="@+id/patient_id_entry"
-        style="@style/edit_text"
+        style="@style/right_aligned_edit_text"
         android:autofillHints="enter the patient's id"
         android:hint="@string/patient_id_hint"
         android:inputType="number"
@@ -87,7 +87,7 @@
 
     <EditText
         android:id="@+id/patient_firstname_entry"
-        style="@style/edit_text"
+        style="@style/right_aligned_edit_text"
         android:autofillHints="enter the patient's firstname"
         android:hint="@string/patient_firstname_hint"
         android:inputType="text"
@@ -96,7 +96,7 @@
 
     <EditText
         android:id="@+id/patient_lastname_entry"
-        style="@style/edit_text"
+        style="@style/right_aligned_edit_text"
         android:autofillHints="enter the patient's lastname"
         android:hint="@string/patient_lastname_hint"
         android:inputType="text"
@@ -105,7 +105,7 @@
 
     <EditText
         android:id="@+id/patient_department_entry"
-        style="@style/edit_text"
+        style="@style/right_aligned_edit_text"
         android:autofillHints="enter the patient's department"
         android:hint="@string/patient_department_hint"
         android:inputType="text"
@@ -114,7 +114,7 @@
 
     <EditText
         android:id="@+id/patient_nurse_id"
-        style="@style/edit_text"
+        style="@style/right_aligned_edit_text"
         android:autofillHints="enter the ID for the patient's nurse"
         android:hint="@string/patient_nurse_id_hint"
         android:inputType="number"
@@ -123,7 +123,7 @@
 
     <EditText
         android:id="@+id/patient_room_entry"
-        style="@style/edit_text"
+        style="@style/right_aligned_edit_text"
         android:autofillHints="enter the room number of the patient"
         android:hint="@string/patient_room_hint"
         android:inputType="number"

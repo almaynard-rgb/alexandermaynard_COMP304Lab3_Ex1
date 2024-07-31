@@ -7,4 +7,119 @@
     android:layout_height="match_parent"
     tools:context=".UpdateInfo">
 
+    <TextView
+        android:id="@+id/patient_title"
+        style="@style/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/update_info_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/find_patient_title"
+        style="@style/sub_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:text="@string/find_patient_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patient_title" />
+
+    <EditText
+        android:id="@+id/patient_id_search"
+        style="@style/right_aligned_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="6dp"
+        android:autofillHints="enter the patient's ID"
+        android:hint="@string/patient_id_hint"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/find_patient_title" />
+
+    <Button
+        android:id="@+id/search_patient_btn"
+        style="@style/regular_button"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="56dp"
+        android:text="@string/search_btn_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/find_patient_title" />
+
+    <TextView
+        android:id="@+id/update_patient_title"
+        style="@style/sub_title_text"
+        android:layout_marginTop="106dp"
+        android:text="@string/update_patient_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/find_patient_title" />
+
+    <EditText
+        android:id="@+id/patient_id_entry"
+        style="@style/right_aligned_edit_text"
+        android:autofillHints="enter the patient's id"
+        android:hint="@string/update_patient_id_hint"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/update_patient_title" />
+
+    <EditText
+        android:id="@+id/patient_firstname_entry"
+        style="@style/right_aligned_edit_text"
+        android:autofillHints="enter the patient's firstname"
+        android:hint="@string/update_patient_firstname_hint"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patient_id_entry" />
+
+    <EditText
+        android:id="@+id/patient_lastname_entry"
+        style="@style/right_aligned_edit_text"
+        android:autofillHints="enter the patient's lastname"
+        android:hint="@string/update_patient_lastname_hint"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patient_firstname_entry" />
+
+    <EditText
+        android:id="@+id/patient_department_entry"
+        style="@style/right_aligned_edit_text"
+        android:autofillHints="enter the patient's department"
+        android:hint="@string/update_patient_department_hint"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patient_lastname_entry" />
+
+    <EditText
+        android:id="@+id/patient_nurse_id"
+        style="@style/right_aligned_edit_text"
+        android:autofillHints="enter the ID for the patient's nurse"
+        android:hint="@string/update_patient_nurse_id_hint"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patient_department_entry" />
+
+    <EditText
+        android:id="@+id/patient_room_entry"
+        style="@style/right_aligned_edit_text"
+        android:autofillHints="enter the room number of the patient"
+        android:hint="@string/update_patient_room_hint"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patient_nurse_id" />
+
+    <Button
+        android:id="@+id/submit_btn"
+        style="@style/regular_button"
+        android:text="@string/update_btn_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
