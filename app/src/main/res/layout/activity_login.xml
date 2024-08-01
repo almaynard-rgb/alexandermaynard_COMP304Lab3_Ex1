@@ -5,18 +5,19 @@
     android:id="@+id/login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/activity_frame_layout_margin"
+    android:background="@drawable/content_frame_border"
     tools:context=".Login">
 
-    <!--Title for the activity-->
+    <!--Title for the login activity-->
     <TextView
         android:id="@+id/login_title"
         style="@style/title_text"
         android:text="@string/login_page_title"
+        android:background="@drawable/title_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <!--Edit text for the nurse to enter their username-->
 
     <!--Edit text for the nurse to enter their username-->
     <EditText
@@ -30,8 +31,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/edit_text_border"
         app:layout_constraintTop_toBottomOf="@+id/login_title" />
 
+    <!--Edit text for the nurse password-->
     <EditText
         android:id="@+id/nurse_password_entry"
         style="@style/center_edit_text"
@@ -42,10 +45,10 @@
         android:textColor="@color/dark_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/edit_text_border"
         app:layout_constraintTop_toBottomOf="@+id/nurse_username_entry" />
 
-
-    <!--Button to to login-->
+    <!--Button to to login as a nurse-->
     <Button
         android:id="@+id/login_btn"
         style="@style/regular_button"

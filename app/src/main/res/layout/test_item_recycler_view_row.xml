@@ -4,9 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-
-    <!--To display all the relevant information about a test item for a patient-->
+    <!--To display one test item for a patient-->
     <TextView
         android:id="@+id/house_type_row_textview"
         style="@style/recycler_text_view"

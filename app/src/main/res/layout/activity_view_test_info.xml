@@ -5,8 +5,11 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/activity_frame_layout_margin"
+    android:background="@drawable/content_frame_border"
     tools:context=".ViewTestInfo">
 
+    <!--Title for the view test activity-->
     <TextView
         android:id="@+id/view_test_title"
         style="@style/title_text"
@@ -14,50 +17,53 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:text="@string/view_test_info_title_text"
+        android:background="@drawable/title_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--sub-title for the search test for patient area-->
     <TextView
         android:id="@+id/search_test_for_patient_title"
         style="@style/sub_title_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
         android:text="@string/search_patient_tests_title"
+        android:background="@drawable/sub_title_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_test_title" />
 
+    <!--edit text to enter a patient's id to later search for it-->
     <EditText
         android:id="@+id/patient_id_search_entry"
         style="@style/right_aligned_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginStart="56dp"
         android:layout_marginTop="26dp"
         android:autofillHints="enter the patient's ID"
         android:hint="@string/patient_id_hint"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/edit_text_border"
         app:layout_constraintTop_toBottomOf="@+id/search_test_for_patient_title" />
 
+    <!--Button to search for a patient by id-->
     <Button
         android:id="@+id/search_patient_btn"
         style="@style/regular_button"
         android:layout_marginTop="26dp"
-        android:layout_marginEnd="56dp"
+        android:layout_marginEnd="26dp"
         android:text="@string/search_btn_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_test_for_patient_title" />
 
+    <!--sub-title for the search test results (for patient) area-->
     <TextView
         android:id="@+id/search_test_for_patient_results_title"
         style="@style/sub_title_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
         android:text="@string/search_patient_tests_results_title"
+        android:background="@drawable/sub_title_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_patient_btn" />

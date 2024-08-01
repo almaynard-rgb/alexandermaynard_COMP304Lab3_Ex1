@@ -5,6 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/activity_frame_layout_margin"
+    android:background="@drawable/content_frame_border"
     tools:context=".MainActivity">
 
     <!--Image displaying the Application Logo-->
@@ -23,7 +25,7 @@
         app:layout_constraintVertical_bias="0.331"
         app:srcCompat="@drawable/stethoscope" />
 
-    <!--Button to go to the login screen activity-->
+    <!--Button to go to the login screen activity for nurses-->
     <Button
         android:id="@+id/to_login_page_btn"
         style="@style/regular_button"

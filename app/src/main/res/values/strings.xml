@@ -21,7 +21,6 @@
 
     <!--patient and update info specific strings-->
     <string name="patient_title">PATIENT</string>
-    <string name="search_patient_title">Search a patient:</string>
     <string name="enter_patient_title">Enter a new patient:</string>
     <string name="patient_result_text_prompt">Patient Result:</string>
     <string name="patient_firstname_hint">Enter the patient firstname</string>
@@ -31,10 +30,10 @@
     <string name="patient_room_hint">Enter the room for the patient</string>
 
     <!--test page specific strings-->
-    <string name="test_page_title">Tests</string>
+    <string name="test_page_title">TEST</string>
     <string name="test_id_hint">Enter the test ID</string>
     <string name="test_patient_id_hint">Patient for the test (patient ID)</string>
-    <string name="test_nurse_id_hint">Nurse assigned(nurse ID)</string>
+    <string name="test_nurse_id_hint">Nurse assigned (nurse ID)</string>
     <string name="patient_bpl_hint">Enter the patient BPL</string>
     <string name="patient_bhp_hint">Enter the patient BHP</string>
     <string name="patient_temp_hint">Enter the patient temperature</string>
@@ -49,12 +48,12 @@
 
 
     <!--view test info specific strings-->
-    <string name="view_test_info_title_text">View Test Information</string>
+    <string name="view_test_info_title_text">VIEW TEST INFO</string>
     <string name="search_patient_tests_title">Search for patient specific tests:</string>
     <string name="search_patient_tests_results_title">Test Results:</string>
 
     <!--update info specific strings-->
-    <string name="update_info_title">Update Patient Information</string>
+    <string name="update_info_title">UPDATE PATIENT INFO</string>
     <string name="find_patient_title">Find the patient to update:</string>
     <string name="patient_found_title">Patient you want to update:</string>
     <string name="update_patient_title">Update patient info:</string>

@@ -5,16 +5,21 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/activity_frame_layout_margin"
+    android:background="@drawable/content_frame_border"
     tools:context=".Test">
 
+    <!--Title for the test activity-->
     <TextView
         android:id="@+id/test_page_title"
         style="@style/title_text"
         android:text="@string/test_page_title"
+        android:background="@drawable/title_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--Edit text to enter a test's ID-->
     <EditText
         android:id="@+id/test_id_entry"
         style="@style/right_aligned_edit_text"
@@ -23,8 +28,10 @@
         android:hint="@string/test_id_hint"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/edit_text_border"
         app:layout_constraintTop_toBottomOf="@+id/test_page_title" />
 
+    <!--Edit text to enter the ID for the patient associated with the test-->
     <EditText
         android:id="@+id/patient_id_entry"
         style="@style/right_aligned_edit_text"
@@ -32,8 +39,10 @@
         android:hint="@string/test_patient_id_hint"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/edit_text_border"
         app:layout_constraintTop_toBottomOf="@+id/test_id_entry" />
 
+    <!--Edit text to enter the ID for the nurse associated with the test-->
     <EditText
         android:id="@+id/nurse_id_entry"
         style="@style/right_aligned_edit_text"
@@ -41,8 +50,10 @@
         android:hint="@string/test_nurse_id_hint"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/edit_text_border"
         app:layout_constraintTop_toBottomOf="@+id/patient_id_entry" />
 
+    <!--Edit text to enter patient's BPL associated with the test-->
     <EditText
         android:id="@+id/patient_bpl_entry"
         style="@style/right_aligned_edit_text"
@@ -50,8 +61,10 @@
         android:hint="@string/patient_bpl_hint"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/edit_text_border"
         app:layout_constraintTop_toBottomOf="@+id/nurse_id_entry" />
 
+    <!--Edit text to enter patient's BHP associated with the test-->
     <EditText
         android:id="@+id/patient_bhp_entry"
         style="@style/right_aligned_edit_text"
@@ -59,8 +72,10 @@
         android:hint="@string/patient_bhp_hint"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/edit_text_border"
         app:layout_constraintTop_toBottomOf="@+id/patient_bpl_entry" />
 
+    <!--Edit text to enter patient's temperature associated with the test-->
     <EditText
         android:id="@+id/patient_temperature_entry"
         style="@style/right_aligned_edit_text"
@@ -68,8 +83,32 @@
         android:hint="@string/patient_temp_hint"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/edit_text_border"
         app:layout_constraintTop_toBottomOf="@+id/patient_bhp_entry" />
 
+    <!--Edit text to enter patient's blood type associated with the test-->
+    <EditText
+        android:id="@+id/patient_blood_type_entry"
+        style="@style/right_aligned_edit_text"
+        android:autofillHints="enter the room number of the patient"
+        android:hint="@string/patient_blood_type_hint"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/edit_text_border"
+        app:layout_constraintTop_toBottomOf="@+id/patient_temperature_entry" />
+
+    <!--Edit text to enter patient's blood sugar level associated with the test-->
+    <EditText
+        android:id="@+id/patient_blood_sugar_entry"
+        style="@style/right_aligned_edit_text"
+        android:autofillHints="enter the room number of the patient"
+        android:hint="@string/patient_blood_sugar_level_hint"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/edit_text_border"
+        app:layout_constraintTop_toBottomOf="@+id/patient_blood_type_entry" />
+
+    <!--Button to enter the data-->
     <Button
         android:id="@+id/enter_data_btn"
         style="@style/regular_button"

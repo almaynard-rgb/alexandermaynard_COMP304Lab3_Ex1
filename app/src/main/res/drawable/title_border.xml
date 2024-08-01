@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--border for the title text view fields-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--background color-->
+    <solid android:color="@color/dark_blue"/>
+    <!--Border Colors-->
+    <stroke android:width="1dp" android:color="@color/dark_blue"/>
+    <!--For rounded corners-->
+    <corners android:radius="20dp"/>
+    <!--for padding-->
+    <padding android:bottom="0dp" android:left="30dp" android:right="30dp" android:top="0dp"/>
+</shape>
