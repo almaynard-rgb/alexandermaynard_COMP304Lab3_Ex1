@@ -1,10 +1,7 @@
 package com.alexandermaynard_comp304lab3_ex1.Database.test
 
-import android.health.connect.datatypes.units.Temperature
-import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 

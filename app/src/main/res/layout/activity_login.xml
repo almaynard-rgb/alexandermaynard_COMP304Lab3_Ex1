@@ -53,6 +53,15 @@
         android:id="@+id/login_btn"
         style="@style/regular_button"
         android:text="@string/login_btn_text"
+        app:layout_constraintBottom_toTopOf="@+id/logout_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--Button to to logout of nurse account-->
+    <Button
+        android:id="@+id/logout_btn"
+        style="@style/regular_button"
+        android:text="@string/logout_btn_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -1,9 +1,7 @@
 package com.alexandermaynard_comp304lab3_ex1.Database.patient
 
-import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 

@@ -1,6 +1,5 @@
 package com.alexandermaynard_comp304lab3_ex1.Database.nurse
 
-import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey

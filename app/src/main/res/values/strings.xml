@@ -16,6 +16,7 @@
     <!--login specific strings-->
     <string name="login_page_title">NURSE LOGIN</string>
     <string name="login_btn_text">Login</string>
+    <string name="logout_btn_text">Logout</string>
     <string name="login_username_hint">Enter your username</string>
     <string name="login_password_hint">Enter your password</string>
 
