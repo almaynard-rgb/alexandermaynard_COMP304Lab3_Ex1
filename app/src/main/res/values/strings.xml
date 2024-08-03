@@ -3,6 +3,7 @@
     <string name="app_name">Nurse Log Application</string>
 
     <!--menu specific strings-->
+    <string name="main_page_options_text">Main Nav Page</string>
     <string name="login_page_option_text">Login</string>
     <string name="patients_page_option_text">Patients</string>
     <string name="tests_page_option_text">Tests</string>

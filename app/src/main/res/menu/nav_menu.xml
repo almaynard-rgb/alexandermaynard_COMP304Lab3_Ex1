@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--Main page option menu item-->
+    <item
+        android:id="@+id/main_page_option"
+        android:title="@string/main_page_options_text">
+    </item>
     <!--Login page option menu item-->
     <item
         android:id="@+id/login_page_option"

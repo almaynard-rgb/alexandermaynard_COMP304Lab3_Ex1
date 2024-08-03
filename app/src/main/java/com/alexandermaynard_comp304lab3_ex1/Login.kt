@@ -3,6 +3,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -12,7 +13,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.alexandermaynard_comp304lab3_ex1.Database.nurse.Nurse
 import com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.nurse.NurseViewModel
 import kotlinx.coroutines.launch
 
@@ -39,34 +39,42 @@ class Login : AppCompatActivity() {
 
         //val database = Room.databaseBuilder(applicationContext, NurseAppDatabase::class.java, "Db").allowMainThreadQueries().build()
 
-        //create some nurses to start the application in case there are none
-        val nurse1 = Nurse(12345, "Alex", "Maynard", "Cardio", "hello123")
-        val nurse2 = Nurse(11111, "Thomas", "Maynard", "Cardio", "hello1234")
-
         //initialize the nurseViewModel
         nurseViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(NurseViewModel::class.java)
 
-        nurseViewModel.insertNurse(nurse1)
-        nurseViewModel.insertNurse(nurse2)
-
         //assign the login and password edit text fields.
-        val nurseLoginTextView = findViewById<EditText>(R.id.nurse_username_entry)
-        val nursePasswordTextView = findViewById<EditText>(R.id.nurse_password_entry)
+        val nurseLoginTextView = findViewById<EditText>(R.id.nurse_username_entry).text
+        val nursePasswordTextView = findViewById<EditText>(R.id.nurse_password_entry).text
 
         val loginBtn = findViewById<Button>(R.id.login_btn)
         val logoutBtn = findViewById<Button>(R.id.logout_btn)
 
         loginBtn.setOnClickListener {
-            lifecycleScope.launch() {
-                val foundNurse = nurseViewModel.getNurse(12345, "hello123")
-                if(nurseLoginTextView.text.toString() == foundNurse.nurseId.toString() && nursePasswordTextView.text.toString() == foundNurse.password.toString()) {
-                    editLoggedInNurseId.putString("loggedInNurseId", foundNurse.nurseId.toString()).commit()
-                    Toast.makeText(applicationContext, "Login success!", Toast.LENGTH_LONG).show()
-                    val i = Intent(applicationContext, MainActivity::class.java)
-                    startActivity(i)
-                }
-                else {
-                    Toast.makeText(applicationContext, "Username or password is incorrect!", Toast.LENGTH_LONG).show()
+
+            if(nurseLoginTextView.isBlank() || nursePasswordTextView.isBlank()) {
+                Toast.makeText(applicationContext, "One or more fields are blank", Toast.LENGTH_LONG).show()
+            } else {
+                lifecycleScope.launch {
+                    try {
+                        editLoggedInNurseId.putString("loggedInNurseId", nurseViewModel.getNurse(nurseLoginTextView.toString().toInt(), nursePasswordTextView.toString())?.nurseId.toString()).commit()
+                        Toast.makeText(applicationContext, "Login success!", Toast.LENGTH_LONG).show()
+                        val i = Intent(applicationContext, MainActivity::class.java)
+                        startActivity(i)
+                    } catch (e: Exception) {
+                        Log.e("Login Exception", "Please check your password or username and make sure they are correct")
+                        Toast.makeText(applicationContext, "Login failed, check your credentials", Toast.LENGTH_LONG).show()
+                    }
+
+                    //if(nurseViewModel.getNurse(nurseLoginTextView.toString().toInt(), nursePasswordTextView.toString()).toString()
+                            //.isNotBlank()) {
+                        //editLoggedInNurseId.putString("loggedInNurseId", nurseViewModel.getNurse(nurseLoginTextView.toString().toInt(), nursePasswordTextView.toString()).nurseId.toString()).commit()
+                        //Toast.makeText(applicationContext, "Login success!", Toast.LENGTH_LONG).show()
+                        //val i = Intent(applicationContext, MainActivity::class.java)
+                        //startActivity(i)
+                    //}
+                    //else {
+                        //Toast.makeText(applicationContext, "Username or password is incorrect!", Toast.LENGTH_LONG).show()
+                    //}
                 }
             }
         }

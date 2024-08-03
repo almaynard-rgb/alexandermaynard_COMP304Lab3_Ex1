@@ -14,4 +14,8 @@ data class Patient(
     @ColumnInfo(name = "department") val department: String,
     @ColumnInfo(name = "nurse_id") val nurseId: Int,
     @ColumnInfo(name = "room") val room: Int
-)
+) {
+    override fun toString(): String {
+        return "Name: $firstname $lastname Nurse: $nurseId\nDepartment: $department  Room: $room"
+    }
+}

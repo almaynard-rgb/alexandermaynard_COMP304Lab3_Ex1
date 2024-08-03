@@ -20,14 +20,24 @@ class NurseViewModel(application: Application): AndroidViewModel(application) {
         nurseRepo = NurseRepository(nurseDao)
     }
 
-    suspend fun getNurse(nurseId: Int, password: String): Nurse {
-        val deferredNurse: Deferred<Nurse> = viewModelScope.async {
+    suspend fun getNurse(nurseId: Int, password: String): Nurse? {
+        val deferredNurse: Deferred<Nurse?> = viewModelScope.async {
             nurseRepo.getNurse(nurseId, password)
+        }
+        return deferredNurse.await()
+    }
+    suspend fun nurseIdCheck(nurseId: Int): Nurse? {
+        val deferredNurse: Deferred<Nurse?> = viewModelScope.async {
+            nurseRepo.getNurseId(nurseId)
         }
         return deferredNurse.await()
     }
 
     fun insertNurse(nurse: Nurse) = viewModelScope.launch(Dispatchers.IO){
         nurseRepo.insertNurse(nurse)
+    }
+
+    fun updateNurse(nurse: Nurse) = viewModelScope.launch {
+        nurseRepo.updateNurse(nurse)
     }
 }

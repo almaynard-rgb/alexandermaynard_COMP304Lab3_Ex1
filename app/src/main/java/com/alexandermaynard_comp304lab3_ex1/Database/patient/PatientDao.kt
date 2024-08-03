@@ -5,17 +5,16 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PatientDao {
 
     @Query("SELECT * FROM patient WHERE patient_id = :patientId")
-    fun getPatientInfo(patientId: Int): Flow<Patient>
+    suspend fun getPatientInfo(patientId: Int): Patient?
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
-    fun insertPatientInfo(patient: Patient)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertPatientInfo(patient: Patient)
 
-    @Update
-    fun updatePatientInfo(patient: Patient)
+    @Update(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun updatePatientInfo(patient: Patient)
 }

@@ -4,15 +4,22 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface NurseDao {
-
     //to retrieve the nurse info if an id and password exists and the password is correct
     @Query("SELECT * FROM nurse WHERE nurse_id = :nurseId AND password = :password")
-    suspend fun getNurseInfo(nurseId: Int, password: String): Nurse
+    suspend fun getNurseInfo(nurseId: Int, password: String): Nurse?
+
+    //check if nurse is there
+    @Query("SELECT * FROM nurse WHERE nurse_id = :nurseId")
+    suspend fun getNurseById(nurseId: Int): Nurse?
 
     //insert for testing purposes
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertNurseInfo(nurse: Nurse)
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun updateNurseInfo(nurse: Nurse)
 }
