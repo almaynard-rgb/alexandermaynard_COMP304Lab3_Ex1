@@ -16,7 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.nurse.NurseViewModel
 import kotlinx.coroutines.launch
 
-class Login : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     //shared preferences for the nurseId
     lateinit var loggedInNurseIdSharedPref: SharedPreferences

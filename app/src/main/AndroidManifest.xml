@@ -16,7 +16,7 @@
             android:name=".UpdateInfo"
             android:exported="false" />
         <activity
-            android:name=".ViewTestInfo"
+            android:name=".ViewTestInfoActivity"
             android:exported="false" />
         <activity
             android:name=".TestActivity"
@@ -25,7 +25,7 @@
             android:name=".PatientActivity"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.Alexandermaynard_COMP304Lab3_Ex1" />
         <activity

@@ -1,7 +1,5 @@
 package com.alexandermaynard_comp304lab3_ex1
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -15,32 +13,30 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.alexandermaynard_comp304lab3_ex1.Database.patient.Patient
+import com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.nurse.NurseViewModel
 import com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.patient.PatientViewModel
 import kotlinx.coroutines.launch
 
-class PatientActivity : AppCompatActivity() {
-    //viewmodel to access room database
-    lateinit var patientViewModel: PatientViewModel
+//viewmodels to access room database
+lateinit var patientViewModel: PatientViewModel
+lateinit var nurseViewModel: NurseViewModel
 
-    //shared preferences for the nurseId
-    lateinit var loggedInNurseIdSharedPref: SharedPreferences
-
+class UpdateInfo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_patient)
+        setContentView(R.layout.activity_update_info)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        //get access to the sharedPrefs
-        loggedInNurseIdSharedPref = getSharedPreferences("loggedInNurseId", Context.MODE_PRIVATE)
-
         //initialize the patientViewModel
-        patientViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(
-            PatientViewModel::class.java)
+        patientViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(PatientViewModel::class.java)
+
+        //initialize the nurseViewModel
+        nurseViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(NurseViewModel::class.java)
+
 
         //initialize the search bar to later return a patient
         val searchEditText = findViewById<EditText>(R.id.patient_id_search)
@@ -73,9 +69,8 @@ class PatientActivity : AppCompatActivity() {
 
         //get reference to all fields that were entered
         val patientIdEditText = findViewById<EditText>(R.id.patient_id_entry).text
-        val patientFirstnameEditText = findViewById<EditText>(R.id.patient_firstname_entry).text
-        val patientLastnameEditText = findViewById<EditText>(R.id.patient_lastname_entry).text
         val patientDepartmentEditText = findViewById<EditText>(R.id.patient_department_entry).text
+        val patientNurseIdEditText  = findViewById<EditText>(R.id.patient_nurse_id).text
         val patientRoomEditText = findViewById<EditText>(R.id.patient_room_entry).text
 
         //reference to the submit button
@@ -84,15 +79,18 @@ class PatientActivity : AppCompatActivity() {
             lifecycleScope.launch {
                 //if any edit texts are left blank
                 if(patientIdEditText.toString().isBlank()
-                    || patientFirstnameEditText.toString().isBlank()
-                    || patientLastnameEditText.toString().isBlank()
+                    || patientNurseIdEditText.toString().isBlank()
                     || patientDepartmentEditText.toString().isBlank()
                     || patientRoomEditText.toString().isBlank()) {
                     Toast.makeText(applicationContext, "One or more fields were left empty", Toast.LENGTH_LONG).show()
                 }
-                //check if patientId already exists
-                else if(patientViewModel.getPatient(patientIdEditText.toString().toInt())?.patientId != null) {
-                    Toast.makeText(applicationContext, "Patient Id already exist", Toast.LENGTH_LONG).show()
+                //check if patientId doesn't already exist
+                else if(patientViewModel.getPatient(patientIdEditText.toString().toInt())?.patientId == null) {
+                    Toast.makeText(applicationContext, "Patient Id does not exist and cannot change", Toast.LENGTH_LONG).show()
+                }
+                //check if nurse exists
+                else if(nurseViewModel.nurseIdCheck(patientNurseIdEditText.toString().toInt())?.nurseId == null) {
+                    Toast.makeText(applicationContext, "Nurse Id does not exist", Toast.LENGTH_LONG).show()
                 }
                 else if(!departmentChecks(patientDepartmentEditText.toString())) {
                     Toast.makeText(applicationContext, "Departments must be 'Cardio', 'Neuro' or 'Physio'! ", Toast.LENGTH_LONG).show()
@@ -101,24 +99,23 @@ class PatientActivity : AppCompatActivity() {
                 else if(!roomChecks(patientRoomEditText.toString())) {
                     Toast.makeText(applicationContext, "There are only 20 rooms!", Toast.LENGTH_LONG).show()
                 } else {
-                    patientViewModel.insertPatient(
+                    patientViewModel.updatePatient(
                         Patient(
                             patientIdEditText.toString().toInt(),
-                            patientFirstnameEditText.toString(),
-                            patientLastnameEditText.toString(),
+                            patientViewModel.getPatient(patientIdEditText.toString().toInt())!!.firstname,
+                            patientViewModel.getPatient(patientIdEditText.toString().toInt())!!.lastname,
                             patientDepartmentEditText.toString().uppercase(),
-                            loggedInNurseIdSharedPref.getString("loggedInNurseId", "loggedOut")!!.toInt(),
+                            patientNurseIdEditText.toString().toInt(),
                             patientRoomEditText.toString().toInt()
                         )
                     )
                     Toast.makeText(
                         applicationContext,
-                        "New patient data created",
+                        "Patient data updated",
                         Toast.LENGTH_LONG
                     ).show()
                     patientIdEditText.clear()
-                    patientFirstnameEditText.clear()
-                    patientLastnameEditText.clear()
+                    patientNurseIdEditText.clear()
                     patientDepartmentEditText.clear()
                     patientRoomEditText.clear()
                 }

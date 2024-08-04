@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
         val loginBtn = findViewById<Button>(R.id.to_login_page_btn)
         loginBtn.setOnClickListener {
-            val i = Intent(this, Login::class.java)
+            val i = Intent(this, LoginActivity::class.java)
             startActivity(i)
         }
     }
@@ -128,14 +128,14 @@ class MainActivity : AppCompatActivity() {
                     return true
                 }
                 else {
-                    val nextScreenIntent = Intent(this, Login::class.java)
+                    val nextScreenIntent = Intent(this, LoginActivity::class.java)
                     startActivity(nextScreenIntent)
                 }
             }
             //when login option is pressed
             R.id.login_page_option -> {
                 //go to the Login Screen
-                val nextScreenIntent = Intent(this, Login::class.java)
+                val nextScreenIntent = Intent(this, LoginActivity::class.java)
                 startActivity(nextScreenIntent)
                 return true
             }
@@ -147,7 +147,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(nextScreenIntent)
                     return true
                 } else {
-                    val nextScreenIntent = Intent(this, Login::class.java)
+                    val nextScreenIntent = Intent(this, LoginActivity::class.java)
                     startActivity(nextScreenIntent)
                 }
             }
@@ -160,7 +160,7 @@ class MainActivity : AppCompatActivity() {
                     return true
                 }
                 else {
-                    val nextScreenIntent = Intent(this, Login::class.java)
+                    val nextScreenIntent = Intent(this, LoginActivity::class.java)
                     startActivity(nextScreenIntent)
                 }
             }
@@ -168,12 +168,12 @@ class MainActivity : AppCompatActivity() {
             R.id.view_tests_info_page_option -> {
                 //go to the ViewTestInfo Screen
                 if(loggedIn == true) {
-                    val nextScreenIntent = Intent(this, ViewTestInfo::class.java)
+                    val nextScreenIntent = Intent(this, ViewTestInfoActivity::class.java)
                     startActivity(nextScreenIntent)
                     return true
                 }
                 else {
-                    val nextScreenIntent = Intent(this, Login::class.java)
+                    val nextScreenIntent = Intent(this, LoginActivity::class.java)
                     startActivity(nextScreenIntent)
                 }
             }
@@ -187,7 +187,7 @@ class MainActivity : AppCompatActivity() {
                     return true
                 }
                 else {
-                    val nextScreenIntent = Intent(this, Login::class.java)
+                    val nextScreenIntent = Intent(this, LoginActivity::class.java)
                     startActivity(nextScreenIntent)
                 }
             }

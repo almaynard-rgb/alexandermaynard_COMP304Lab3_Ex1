@@ -15,7 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.test.TestViewModel
 import kotlinx.coroutines.launch
 
-class ViewTestInfo : AppCompatActivity() {
+class ViewTestInfoActivity : AppCompatActivity() {
 
     //viewmodel to access room database
     lateinit var testViewModel: TestViewModel

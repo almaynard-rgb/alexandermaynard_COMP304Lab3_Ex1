@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     style="@style/activity_frame_layout_margin"
     android:background="@drawable/content_frame_border"
-    tools:context=".ViewTestInfo">
+    tools:context=".ViewTestInfoActivity">
 
     <!--Title for the view test activity-->
     <TextView

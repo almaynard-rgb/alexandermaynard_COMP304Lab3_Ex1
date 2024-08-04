@@ -14,8 +14,8 @@
         android:id="@+id/patient_title"
         style="@style/title_text"
         android:layout_marginTop="36dp"
-        android:text="@string/update_info_title"
         android:background="@drawable/title_border"
+        android:text="@string/update_info_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,15 +26,6 @@
     <!--________________________-->
 
     <!--sub-title for the find patient area-->
-    <TextView
-        android:id="@+id/find_patient_title"
-        style="@style/sub_title_text"
-        android:layout_marginTop="26dp"
-        android:text="@string/find_patient_title"
-        android:background="@drawable/sub_title_border"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patient_title" />
 
     <!--edit text to enter a patient's id to later search for it-->
     <EditText
@@ -42,23 +33,46 @@
         style="@style/right_aligned_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="16dp"
         android:autofillHints="enter the patient's ID"
         android:background="@drawable/edit_text_border"
         android:hint="@string/patient_id_hint"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/find_patient_title" />
+        app:layout_constraintTop_toBottomOf="@+id/patient_title" />
 
     <!--Button to search for a patient by id-->
     <Button
         android:id="@+id/search_patient_btn"
         style="@style/regular_button"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="26dp"
         android:text="@string/search_btn_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/find_patient_title" />
+        app:layout_constraintTop_toBottomOf="@+id/patient_title" />
+
+
+    <!--sub-title for the patient result area-->
+    <TextView
+        android:id="@+id/patient_result_title"
+        style="@style/regular_text_view"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/sub_title_border"
+        android:text="@string/patient_result_text_prompt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patient_id_search" />
+
+    <!--Text view to display the searched patient results-->
+    <TextView
+        android:id="@+id/patient_result"
+        style="@style/regular_text_view"
+        android:layout_height="60dp"
+        android:layout_marginTop="6dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patient_result_title" />
 
 
     <!--content divider to separate the entry and search/display areas-->
@@ -66,12 +80,12 @@
         android:id="@+id/content_divider"
         android:layout_width="match_parent"
         android:layout_height="4dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:background="@color/dark_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patient_id_search" />
+        app:layout_constraintTop_toBottomOf="@+id/patient_result" />
 
     <!--END OF FIND PATIENT INFO-->
     <!--________________________-->
@@ -104,38 +118,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/update_patient_title" />
 
-    <!--edit text to enter a patient's firstname to update it-->
-    <EditText
-        android:id="@+id/patient_firstname_entry"
-        style="@style/right_aligned_edit_text"
-        android:autofillHints="enter the patient's firstname"
-        android:hint="@string/update_patient_firstname_hint"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/edit_text_border"
-        app:layout_constraintTop_toBottomOf="@+id/patient_id_entry" />
 
-    <!--edit text to enter a patient's lastname to update it-->
-    <EditText
-        android:id="@+id/patient_lastname_entry"
-        style="@style/right_aligned_edit_text"
-        android:autofillHints="enter the patient's lastname"
-        android:hint="@string/update_patient_lastname_hint"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/edit_text_border"
-        app:layout_constraintTop_toBottomOf="@+id/patient_firstname_entry" />
+    <!--Text view text to enter a patient's department to update it-->
+    <TextView
+        android:id="@+id/patient_id_warning"
+        style="@style/regular_text_view"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="56dp"
+        android:text="@string/patient_id_warning"
+        android:textColor="@color/dark_red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/update_patient_title" />
 
-    <!--edit text to enter a patient's department to update it-->
     <EditText
         android:id="@+id/patient_department_entry"
         style="@style/right_aligned_edit_text"
+        android:layout_marginTop="6dp"
         android:autofillHints="enter the patient's department"
+        android:background="@drawable/edit_text_border"
         android:hint="@string/update_patient_department_hint"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/edit_text_border"
-        app:layout_constraintTop_toBottomOf="@+id/patient_lastname_entry" />
+        app:layout_constraintTop_toBottomOf="@+id/patient_id_entry" />
 
     <!--edit text to enter a patient's nurse by ID to update it-->
     <EditText
