@@ -1,9 +1,12 @@
 package com.alexandermaynard_comp304lab3_ex1
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -18,12 +21,20 @@ import com.alexandermaynard_comp304lab3_ex1.Database.patient.Patient
 import com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.patient.PatientViewModel
 import kotlinx.coroutines.launch
 
+/*
+* Student ID: 301170707
+* Student Name: Alexander Maynard
+* Class: COMP304 - Section 401
+* Assignment: Lab Assignment 3 - Exercise 1
+* Professor: Parth Padhiyar
+*/
+
 class PatientActivity : AppCompatActivity() {
     //viewmodel to access room database
-    lateinit var patientViewModel: PatientViewModel
+    private lateinit var patientViewModel: PatientViewModel
 
     //shared preferences for the nurseId
-    lateinit var loggedInNurseIdSharedPref: SharedPreferences
+    private lateinit var loggedInNurseIdSharedPref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,8 +50,7 @@ class PatientActivity : AppCompatActivity() {
         loggedInNurseIdSharedPref = getSharedPreferences("loggedInNurseId", Context.MODE_PRIVATE)
 
         //initialize the patientViewModel
-        patientViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(
-            PatientViewModel::class.java)
+        patientViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[PatientViewModel::class.java]
 
         //initialize the search bar to later return a patient
         val searchEditText = findViewById<EditText>(R.id.patient_id_search)
@@ -70,7 +80,6 @@ class PatientActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-
         //get reference to all fields that were entered
         val patientIdEditText = findViewById<EditText>(R.id.patient_id_entry).text
         val patientFirstnameEditText = findViewById<EditText>(R.id.patient_firstname_entry).text
@@ -81,6 +90,7 @@ class PatientActivity : AppCompatActivity() {
         //reference to the submit button
         val submitBtn = findViewById<Button>(R.id.submit_btn)
         submitBtn.setOnClickListener {
+            //call coroutine to use the view models and to not block
             lifecycleScope.launch {
                 //if any edit texts are left blank
                 if(patientIdEditText.toString().isBlank()
@@ -88,34 +98,40 @@ class PatientActivity : AppCompatActivity() {
                     || patientLastnameEditText.toString().isBlank()
                     || patientDepartmentEditText.toString().isBlank()
                     || patientRoomEditText.toString().isBlank()) {
+                    //send proper toast if any fields are blank
                     Toast.makeText(applicationContext, "One or more fields were left empty", Toast.LENGTH_LONG).show()
                 }
                 //check if patientId already exists
                 else if(patientViewModel.getPatient(patientIdEditText.toString().toInt())?.patientId != null) {
                     Toast.makeText(applicationContext, "Patient Id already exist", Toast.LENGTH_LONG).show()
                 }
+                //check to make sure the department exists
                 else if(!departmentChecks(patientDepartmentEditText.toString())) {
                     Toast.makeText(applicationContext, "Departments must be 'Cardio', 'Neuro' or 'Physio'! ", Toast.LENGTH_LONG).show()
                 }
-                //room check
+                //check if the room exists
                 else if(!roomChecks(patientRoomEditText.toString())) {
                     Toast.makeText(applicationContext, "There are only 20 rooms!", Toast.LENGTH_LONG).show()
                 } else {
+                    //otherwise submit to the patient object to the table in the database
                     patientViewModel.insertPatient(
                         Patient(
                             patientIdEditText.toString().toInt(),
                             patientFirstnameEditText.toString(),
                             patientLastnameEditText.toString(),
+                            //use shared prefs here for the logged in nurse
                             patientDepartmentEditText.toString().uppercase(),
                             loggedInNurseIdSharedPref.getString("loggedInNurseId", "loggedOut")!!.toInt(),
                             patientRoomEditText.toString().toInt()
                         )
                     )
+                    //let the user know that the patient was submitted correctly
                     Toast.makeText(
                         applicationContext,
                         "New patient data created",
                         Toast.LENGTH_LONG
                     ).show()
+                    //clear all edit texts
                     patientIdEditText.clear()
                     patientFirstnameEditText.clear()
                     patientLastnameEditText.clear()
@@ -127,24 +143,43 @@ class PatientActivity : AppCompatActivity() {
     }
 
     //check if department exists
-    fun departmentChecks(departmentToCheck: String): Boolean {
-        val departments = Departments.entries.map() { it.name.uppercase() }
+    private fun departmentChecks(departmentToCheck: String): Boolean {
+        val departments = Departments.entries.map { it.name.uppercase() }
 
-        return if (departments.contains(departmentToCheck.uppercase())) {
-            true
-        } else {
-            false
-        }
+        return departments.contains(departmentToCheck.uppercase())
     }
 
     //check if room exists
-    fun roomChecks(roomsToCheck: String): Boolean {
-        val rooms = Rooms.entries.map() { it.name }
+    private fun roomChecks(roomsToCheck: String): Boolean {
+        val rooms = Rooms.entries.map { it.name }
 
-        return if (rooms.contains("ROOM${roomsToCheck}")) {
-            true
-        } else {
-            false
+        return rooms.contains("ROOM${roomsToCheck}")
+    }
+
+    //inflate the options menu for going back the main page
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.back_to_main_menu, menu)
+        return true
+    }
+
+    //provide options for when a options menu item is selected
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return backMenuSelected(item)
+    }
+
+    //functionality for when the options menu item is selected
+    private fun backMenuSelected(item: MenuItem): Boolean {
+        //check the item id
+        when (item.itemId) {
+            //when main option is pressed
+            R.id.main_page_option -> {
+                //go to the Main Screen
+                val nextScreenIntent = Intent(this, MainActivity::class.java)
+                startActivity(nextScreenIntent)
+                return true
+            }
         }
+        return false
     }
 }

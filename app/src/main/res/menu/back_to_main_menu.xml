@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+ * Student ID: 301170707
+ * Student Name: Alexander Maynard
+ * Class: COMP304 - Section 401
+ * Assignment: Lab Assignment 3 - Exercise 1
+ * Professor: Parth Padhiyar
+ -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--Menu for every page except the main page-->
+
+    <!--Main page option menu item-->
+    <item
+        android:id="@+id/main_page_option"
+        android:title="@string/main_page_options_text">
+    </item>
+</menu>

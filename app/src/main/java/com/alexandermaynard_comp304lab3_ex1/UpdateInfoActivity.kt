@@ -1,7 +1,10 @@
 package com.alexandermaynard_comp304lab3_ex1
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -16,6 +19,14 @@ import com.alexandermaynard_comp304lab3_ex1.Database.patient.Patient
 import com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.nurse.NurseViewModel
 import com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.patient.PatientViewModel
 import kotlinx.coroutines.launch
+
+/*
+* Student ID: 301170707
+* Student Name: Alexander Maynard
+* Class: COMP304 - Section 401
+* Assignment: Lab Assignment 3 - Exercise 1
+* Professor: Parth Padhiyar
+*/
 
 //viewmodels to access room database
 lateinit var patientViewModel: PatientViewModel
@@ -32,10 +43,10 @@ class UpdateInfo : AppCompatActivity() {
             insets
         }
         //initialize the patientViewModel
-        patientViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(PatientViewModel::class.java)
+        patientViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[PatientViewModel::class.java]
 
         //initialize the nurseViewModel
-        nurseViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(NurseViewModel::class.java)
+        nurseViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[NurseViewModel::class.java]
 
 
         //initialize the search bar to later return a patient
@@ -76,12 +87,14 @@ class UpdateInfo : AppCompatActivity() {
         //reference to the submit button
         val submitBtn = findViewById<Button>(R.id.submit_btn)
         submitBtn.setOnClickListener {
+            //call coroutine to use the view models and to not block
             lifecycleScope.launch {
                 //if any edit texts are left blank
                 if(patientIdEditText.toString().isBlank()
                     || patientNurseIdEditText.toString().isBlank()
                     || patientDepartmentEditText.toString().isBlank()
                     || patientRoomEditText.toString().isBlank()) {
+                    //send proper toast if any fields are blank
                     Toast.makeText(applicationContext, "One or more fields were left empty", Toast.LENGTH_LONG).show()
                 }
                 //check if patientId doesn't already exist
@@ -92,13 +105,15 @@ class UpdateInfo : AppCompatActivity() {
                 else if(nurseViewModel.nurseIdCheck(patientNurseIdEditText.toString().toInt())?.nurseId == null) {
                     Toast.makeText(applicationContext, "Nurse Id does not exist", Toast.LENGTH_LONG).show()
                 }
+                //check to make sure the department exists
                 else if(!departmentChecks(patientDepartmentEditText.toString())) {
                     Toast.makeText(applicationContext, "Departments must be 'Cardio', 'Neuro' or 'Physio'! ", Toast.LENGTH_LONG).show()
                 }
-                //room check
+                //check if the room exists
                 else if(!roomChecks(patientRoomEditText.toString())) {
                     Toast.makeText(applicationContext, "There are only 20 rooms!", Toast.LENGTH_LONG).show()
                 } else {
+                    //otherwise submit to the nurse object to the table in the database
                     patientViewModel.updatePatient(
                         Patient(
                             patientIdEditText.toString().toInt(),
@@ -109,11 +124,13 @@ class UpdateInfo : AppCompatActivity() {
                             patientRoomEditText.toString().toInt()
                         )
                     )
+                    //let the user know that the patient update was submitted correctly
                     Toast.makeText(
                         applicationContext,
                         "Patient data updated",
                         Toast.LENGTH_LONG
                     ).show()
+                    //clear all edit texts
                     patientIdEditText.clear()
                     patientNurseIdEditText.clear()
                     patientDepartmentEditText.clear()
@@ -124,24 +141,43 @@ class UpdateInfo : AppCompatActivity() {
     }
 
     //check if department exists
-    fun departmentChecks(departmentToCheck: String): Boolean {
-        val departments = Departments.entries.map() { it.name.uppercase() }
+    private fun departmentChecks(departmentToCheck: String): Boolean {
+        val departments = Departments.entries.map { it.name.uppercase() }
 
-        return if (departments.contains(departmentToCheck.uppercase())) {
-            true
-        } else {
-            false
-        }
+        return departments.contains(departmentToCheck.uppercase())
     }
 
     //check if room exists
-    fun roomChecks(roomsToCheck: String): Boolean {
-        val rooms = Rooms.entries.map() { it.name }
+    private fun roomChecks(roomsToCheck: String): Boolean {
+        val rooms = Rooms.entries.map { it.name }
 
-        return if (rooms.contains("ROOM${roomsToCheck}")) {
-            true
-        } else {
-            false
+        return rooms.contains("ROOM${roomsToCheck}")
+    }
+
+    //inflate the options menu for going back the main page
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.back_to_main_menu, menu)
+        return true
+    }
+
+    //provide options for when a options menu item is selected
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return backMenuSelected(item)
+    }
+
+    //functionality for when the options menu item is selected
+    private fun backMenuSelected(item: MenuItem): Boolean {
+        //check the item id
+        when (item.itemId) {
+            //when main option is pressed
+            R.id.main_page_option -> {
+                //go to the Main Screen
+                val nextScreenIntent = Intent(this, MainActivity::class.java)
+                startActivity(nextScreenIntent)
+                return true
+            }
         }
+        return false
     }
 }

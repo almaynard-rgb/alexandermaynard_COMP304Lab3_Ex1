@@ -4,7 +4,15 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-//TO-DO ADD foreign keys!!!!
+/*
+* Student ID: 301170707
+* Student Name: Alexander Maynard
+* Class: COMP304 - Section 401
+* Assignment: Lab Assignment 3 - Exercise 1
+* Professor: Parth Padhiyar
+*/
+
+//Nurse Entity data class for use by room database
 @Entity
 data class Nurse(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "nurse_id") val nurseId: Int,

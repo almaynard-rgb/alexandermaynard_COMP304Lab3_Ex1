@@ -20,17 +20,24 @@ import com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.nurse.NurseViewM
 import com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.patient.PatientViewModel
 import com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.test.TestViewModel
 
+/*
+* Student ID: 301170707
+* Student Name: Alexander Maynard
+* Class: COMP304 - Section 401
+* Assignment: Lab Assignment 3 - Exercise 1
+* Professor: Parth Padhiyar
+*/
 
 class MainActivity : AppCompatActivity() {
 
-    //viewmodels to access room database and initially create values.
-    lateinit var patientViewModel: PatientViewModel
-    lateinit var nurseViewModel: NurseViewModel
-    lateinit var testViewModel: TestViewModel
+    //view models to access room database and initially create values.
+    private lateinit var patientViewModel: PatientViewModel
+    private lateinit var nurseViewModel: NurseViewModel
+    private lateinit var testViewModel: TestViewModel
 
     //shared preferences for the nurseId
-    lateinit var loggedInNurseIdSharedPref: SharedPreferences
-    lateinit var editLoggedInNurseId: SharedPreferences.Editor
+    private lateinit var loggedInNurseIdSharedPref: SharedPreferences
+    private lateinit var editLoggedInNurseId: SharedPreferences.Editor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,32 +48,40 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        //get access to the sharedPrefs
+
+        //initialize the shared prefs
         loggedInNurseIdSharedPref = getSharedPreferences("loggedInNurseId", Context.MODE_PRIVATE)
         editLoggedInNurseId = loggedInNurseIdSharedPref.edit() //used to edit the preferences more easily
 
         //initialize the patientViewModel
-        patientViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(PatientViewModel::class.java)
+        patientViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[PatientViewModel::class.java]
 
         //initialize the nurseViewModel
-        nurseViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(NurseViewModel::class.java)
+        nurseViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[NurseViewModel::class.java]
 
         //initialize the testViewModel
-        testViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(TestViewModel::class.java)
+        testViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[TestViewModel::class.java]
 
+        //reference the login button.
         val loginBtn = findViewById<Button>(R.id.to_login_page_btn)
+
+        //login onclick listener
         loginBtn.setOnClickListener {
+            //intent to go to the Login Activity
             val i = Intent(this, LoginActivity::class.java)
             startActivity(i)
         }
     }
 
+    //onStart to handle the insertion of values into the room database
     override fun onStart() {
         super.onStart()
 
+        //check if the user is logged in by checking the shared preferences
         if (loggedInNurseIdSharedPref.getString("loggedInNurseId", "loggedOut") != ""
             && loggedInNurseIdSharedPref.getString("loggedInNurseId", "loggedOut") != "loggedOut"
         ) {
+            //let the user know that they are still logged in
             Toast.makeText(this, "Still logged in", Toast.LENGTH_LONG).show()
         }
 
@@ -109,29 +124,19 @@ class MainActivity : AppCompatActivity() {
 
     //method that provides functionality for all the options items when clicked
     private fun menuItemSelected(item: MenuItem): Boolean {
+        //value to check if logged in or not
         var loggedIn = false
+
+        //check if logged in
         if(loggedInNurseIdSharedPref.getString("loggedInNurseId", "loggedOut") == ""
             || loggedInNurseIdSharedPref.getString("loggedInNurseId", "loggedOut") == "loggedOut") {
-            loggedIn = false
+            loggedIn = false //not logged in
         }
         else {
-            loggedIn = true
+            loggedIn = true //logged in
         }
         //when user is logged in and check the item id
         when (item.itemId) {
-            //when main option is pressed
-            R.id.main_page_option -> {
-                //go to the Main Screen
-                if(loggedIn == true) {
-                    val nextScreenIntent = Intent(this, MainActivity::class.java)
-                    startActivity(nextScreenIntent)
-                    return true
-                }
-                else {
-                    val nextScreenIntent = Intent(this, LoginActivity::class.java)
-                    startActivity(nextScreenIntent)
-                }
-            }
             //when login option is pressed
             R.id.login_page_option -> {
                 //go to the Login Screen
@@ -141,55 +146,56 @@ class MainActivity : AppCompatActivity() {
             }
             //when patients page option is pressed
             R.id.patients_page_option -> {
-                //go to the Patient Screen
+                //go to the Patient Screen if logged in
                 if (loggedIn == true) {
                     val nextScreenIntent = Intent(this, com.alexandermaynard_comp304lab3_ex1.PatientActivity::class.java)
                     startActivity(nextScreenIntent)
-                    return true
+                    //go to the Login Screen if logged out
                 } else {
                     val nextScreenIntent = Intent(this, LoginActivity::class.java)
                     startActivity(nextScreenIntent)
                 }
+                return true
             }
             //when tests page option is pressed
             R.id.tests_page_option -> {
-                //go to the Test Screen
+                //go to the Test Screen if logged in
                 if(loggedIn == true) {
                     val nextScreenIntent = Intent(this, TestActivity::class.java)
                     startActivity(nextScreenIntent)
-                    return true
-                }
-                else {
+                    //go to the Login Screen if logged out
+                } else {
                     val nextScreenIntent = Intent(this, LoginActivity::class.java)
                     startActivity(nextScreenIntent)
                 }
+                return true
             }
             //when view tests info page option is pressed
             R.id.view_tests_info_page_option -> {
-                //go to the ViewTestInfo Screen
+                //go to the ViewTestInfo Screen if logged in
                 if(loggedIn == true) {
                     val nextScreenIntent = Intent(this, ViewTestInfoActivity::class.java)
                     startActivity(nextScreenIntent)
-                    return true
-                }
-                else {
+                //go to the Login Screen if logged out
+                } else {
                     val nextScreenIntent = Intent(this, LoginActivity::class.java)
                     startActivity(nextScreenIntent)
                 }
+                return true
             }
 
             //when update patient page option is pressed
             R.id.update_patient_page_option -> {
-                //go to the Update Info Screen
+                //go to the Update Info Screen if logged in
                 if(loggedIn == true) {
                     val nextScreenIntent = Intent(this, UpdateInfo::class.java)
                     startActivity(nextScreenIntent)
-                    return true
-                }
-                else {
+                //go to the Login Screen if logged out
+                } else {
                     val nextScreenIntent = Intent(this, LoginActivity::class.java)
                     startActivity(nextScreenIntent)
                 }
+                return true
             }
         }
         return false

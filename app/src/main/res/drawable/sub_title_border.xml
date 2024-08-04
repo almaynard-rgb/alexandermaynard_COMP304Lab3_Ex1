@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--border for the title text view fields-->
+
+<!--
+ * Student ID: 301170707
+ * Student Name: Alexander Maynard
+ * Class: COMP304 - Section 401
+ * Assignment: Lab Assignment 3 - Exercise 1
+ * Professor: Parth Padhiyar
+ -->
+
+<!--border for the sub-title text view fields-->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <!--background color-->
     <solid android:color="@color/medium_blue"/>

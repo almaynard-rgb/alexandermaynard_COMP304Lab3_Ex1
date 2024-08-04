@@ -4,6 +4,8 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -16,13 +18,22 @@ import androidx.lifecycle.lifecycleScope
 import com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.nurse.NurseViewModel
 import kotlinx.coroutines.launch
 
+/*
+* Student ID: 301170707
+* Student Name: Alexander Maynard
+* Class: COMP304 - Section 401
+* Assignment: Lab Assignment 3 - Exercise 1
+* Professor: Parth Padhiyar
+*/
+
 class LoginActivity : AppCompatActivity() {
 
     //shared preferences for the nurseId
-    lateinit var loggedInNurseIdSharedPref: SharedPreferences
-    lateinit var editLoggedInNurseId: SharedPreferences.Editor
+    private lateinit var loggedInNurseIdSharedPref: SharedPreferences
+    private lateinit var editLoggedInNurseId: SharedPreferences.Editor
 
-    lateinit var nurseViewModel: NurseViewModel
+    //reference to the nurseViewModel
+    private lateinit var nurseViewModel: NurseViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,56 +45,87 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
+        //initialize the shared prefs
         loggedInNurseIdSharedPref = getSharedPreferences("loggedInNurseId", Context.MODE_PRIVATE)
         editLoggedInNurseId = loggedInNurseIdSharedPref.edit() //used to edit the preferences more easily
 
-        //val database = Room.databaseBuilder(applicationContext, NurseAppDatabase::class.java, "Db").allowMainThreadQueries().build()
-
         //initialize the nurseViewModel
-        nurseViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(NurseViewModel::class.java)
+        nurseViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[NurseViewModel::class.java]
 
-        //assign the login and password edit text fields.
+        //reference the login and password edit text fields.
         val nurseLoginTextView = findViewById<EditText>(R.id.nurse_username_entry).text
         val nursePasswordTextView = findViewById<EditText>(R.id.nurse_password_entry).text
 
+        //reference the login and password buttons.
         val loginBtn = findViewById<Button>(R.id.login_btn)
         val logoutBtn = findViewById<Button>(R.id.logout_btn)
 
-        loginBtn.setOnClickListener {
 
+        //login onclick listener to login
+        loginBtn.setOnClickListener {
+            //check if fields are blank
             if(nurseLoginTextView.isBlank() || nursePasswordTextView.isBlank()) {
+                //send proper toast
                 Toast.makeText(applicationContext, "One or more fields are blank", Toast.LENGTH_LONG).show()
             } else {
+                //otherwise launch a coroutine to try login
                 lifecycleScope.launch {
                     try {
+                        //get the nurse id and apply it the editLoggedInNurseId shared pref
                         editLoggedInNurseId.putString("loggedInNurseId", nurseViewModel.getNurse(nurseLoginTextView.toString().toInt(), nursePasswordTextView.toString())?.nurseId.toString()).commit()
+                        //toast to alert for proper login
                         Toast.makeText(applicationContext, "Login success!", Toast.LENGTH_LONG).show()
+                        //intent to go back to the Main Activity
                         val i = Intent(applicationContext, MainActivity::class.java)
                         startActivity(i)
+                        //catch exception if getNurse fails
                     } catch (e: Exception) {
+                        //log the error
                         Log.e("Login Exception", "Please check your password or username and make sure they are correct")
+                        //toast to let the user know to try again
                         Toast.makeText(applicationContext, "Login failed, check your credentials", Toast.LENGTH_LONG).show()
                     }
-
-                    //if(nurseViewModel.getNurse(nurseLoginTextView.toString().toInt(), nursePasswordTextView.toString()).toString()
-                            //.isNotBlank()) {
-                        //editLoggedInNurseId.putString("loggedInNurseId", nurseViewModel.getNurse(nurseLoginTextView.toString().toInt(), nursePasswordTextView.toString()).nurseId.toString()).commit()
-                        //Toast.makeText(applicationContext, "Login success!", Toast.LENGTH_LONG).show()
-                        //val i = Intent(applicationContext, MainActivity::class.java)
-                        //startActivity(i)
-                    //}
-                    //else {
-                        //Toast.makeText(applicationContext, "Username or password is incorrect!", Toast.LENGTH_LONG).show()
-                    //}
                 }
             }
         }
 
+        //logout onclick listener to logout
         logoutBtn.setOnClickListener {
+            //set the editLoggedInNurseId to "loggedOut"
             editLoggedInNurseId.putString("loggedInNurseId", "loggedOut").commit()
+            //let the user know they logged out
             Toast.makeText(applicationContext, "Logged out!", Toast.LENGTH_LONG).show()
+            //intent to go back to the Main Activity
             val i = Intent(applicationContext, MainActivity::class.java)
             startActivity(i)
         }
+    }
+
+
+    //inflate the options menu for going back the main page
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.back_to_main_menu, menu)
+        return true
+    }
+
+    //provide options for when a options menu item is selected
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return backMenuSelected(item)
+    }
+
+    //functionality for when the options menu item is selected
+    private fun backMenuSelected(item: MenuItem): Boolean {
+        //check the item id
+        when (item.itemId) {
+            //when main option is pressed
+            R.id.main_page_option -> {
+                //go to the Main Screen
+                val nextScreenIntent = Intent(this, MainActivity::class.java)
+                startActivity(nextScreenIntent)
+                return true
+            }
+        }
+        return false
     }
 }

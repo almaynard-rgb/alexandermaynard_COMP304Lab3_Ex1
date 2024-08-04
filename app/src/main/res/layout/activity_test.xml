@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+ * Student ID: 301170707
+ * Student Name: Alexander Maynard
+ * Class: COMP304 - Section 401
+ * Assignment: Lab Assignment 3 - Exercise 1
+ * Professor: Parth Padhiyar
+ -->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
