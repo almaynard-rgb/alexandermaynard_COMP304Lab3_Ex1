@@ -13,12 +13,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
-import com.alexandermaynard_comp304lab3_ex1.Database.Departments
-import com.alexandermaynard_comp304lab3_ex1.Database.Rooms
 import com.alexandermaynard_comp304lab3_ex1.Database.nurse.Nurse
 import com.alexandermaynard_comp304lab3_ex1.Database.patient.Patient
+import com.alexandermaynard_comp304lab3_ex1.Database.test.Test
 import com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.nurse.NurseViewModel
-import com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.nurse.PatientViewModel
+import com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.patient.PatientViewModel
+import com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.test.TestViewModel
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     //viewmodels to access room database and initially create values.
     lateinit var patientViewModel: PatientViewModel
     lateinit var nurseViewModel: NurseViewModel
+    lateinit var testViewModel: TestViewModel
 
     //shared preferences for the nurseId
     lateinit var loggedInNurseIdSharedPref: SharedPreferences
@@ -50,6 +51,8 @@ class MainActivity : AppCompatActivity() {
         //initialize the nurseViewModel
         nurseViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(NurseViewModel::class.java)
 
+        //initialize the testViewModel
+        testViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(TestViewModel::class.java)
 
         val loginBtn = findViewById<Button>(R.id.to_login_page_btn)
         loginBtn.setOnClickListener {
@@ -71,12 +74,24 @@ class MainActivity : AppCompatActivity() {
         patientViewModel.insertPatient(
             Patient(22222,"Toby","Maguire", Departments.NEURO.departments.uppercase(),12345, Rooms.ROOM1.roomNumber))
         patientViewModel.insertPatient(
-            Patient(33333,"Tobias","Brent",Departments.CARDIO.departments.uppercase(),11111, Rooms.ROOM1.roomNumber))
+            Patient(33333,"Tobias","Brent", Departments.CARDIO.departments.uppercase(),11111, Rooms.ROOM1.roomNumber))
         //new nurses inserted
         nurseViewModel.insertNurse(
             Nurse(12345, "Alex", "Maynard", Departments.NEURO.departments.uppercase(), "hello123"))
         nurseViewModel.insertNurse(
             Nurse(11111, "Thomas", "Maynard", Departments.CARDIO.departments.uppercase(), "hello1234"))
+        testViewModel.insertTest(
+                Test(12121, 22222, 12345, 120.80,false, 38.0, "A+", 120.0)
+        )
+        testViewModel.insertTest(
+            Test(12122, 33333, 11111, 120.70,true, 39.4, "O+", 80.0)
+        )
+        testViewModel.insertTest(
+            Test(12123, 22222, 12345, 110.80,false, 38.4, "A+", 100.0)
+        )
+        testViewModel.insertTest(
+            Test(12124, 33333, 11111, 120.90,true, 37.4, "O+", 80.0)
+        )
     }
 
 
@@ -128,7 +143,7 @@ class MainActivity : AppCompatActivity() {
             R.id.patients_page_option -> {
                 //go to the Patient Screen
                 if (loggedIn == true) {
-                    val nextScreenIntent = Intent(this, com.alexandermaynard_comp304lab3_ex1.Patient::class.java)
+                    val nextScreenIntent = Intent(this, com.alexandermaynard_comp304lab3_ex1.PatientActivity::class.java)
                     startActivity(nextScreenIntent)
                     return true
                 } else {
@@ -140,7 +155,7 @@ class MainActivity : AppCompatActivity() {
             R.id.tests_page_option -> {
                 //go to the Test Screen
                 if(loggedIn == true) {
-                    val nextScreenIntent = Intent(this, Test::class.java)
+                    val nextScreenIntent = Intent(this, TestActivity::class.java)
                     startActivity(nextScreenIntent)
                     return true
                 }

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     style="@style/activity_frame_layout_margin"
     android:background="@drawable/content_frame_border"
-    tools:context=".Test">
+    tools:context=".TestActivity">
 
     <!--Title for the test activity-->
     <TextView
@@ -42,35 +42,24 @@
         android:background="@drawable/edit_text_border"
         app:layout_constraintTop_toBottomOf="@+id/test_id_entry" />
 
-    <!--Edit text to enter the ID for the nurse associated with the test-->
-    <EditText
-        android:id="@+id/nurse_id_entry"
-        style="@style/right_aligned_edit_text"
-        android:autofillHints="enter the nurse's id"
-        android:hint="@string/test_nurse_id_hint"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/edit_text_border"
-        app:layout_constraintTop_toBottomOf="@+id/patient_id_entry" />
-
     <!--Edit text to enter patient's BPL associated with the test-->
     <EditText
         android:id="@+id/patient_bpl_entry"
         style="@style/right_aligned_edit_text"
         android:autofillHints="enter the patient's department"
         android:hint="@string/patient_bpl_hint"
-        android:inputType="text"
+        android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/edit_text_border"
-        app:layout_constraintTop_toBottomOf="@+id/nurse_id_entry" />
+        app:layout_constraintTop_toBottomOf="@+id/patient_id_entry" />
 
     <!--Edit text to enter patient's BHP associated with the test-->
     <EditText
         android:id="@+id/patient_bhp_entry"
         style="@style/right_aligned_edit_text"
         android:autofillHints="enter the ID for the patient's nurse"
-        android:hint="@string/patient_bhp_hint"
-        android:inputType="number"
+        android:hint="@string/patient_bph_hint"
+        android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/edit_text_border"
         app:layout_constraintTop_toBottomOf="@+id/patient_bpl_entry" />
@@ -103,7 +92,7 @@
         style="@style/right_aligned_edit_text"
         android:autofillHints="enter the room number of the patient"
         android:hint="@string/patient_blood_sugar_level_hint"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/edit_text_border"
         app:layout_constraintTop_toBottomOf="@+id/patient_blood_type_entry" />

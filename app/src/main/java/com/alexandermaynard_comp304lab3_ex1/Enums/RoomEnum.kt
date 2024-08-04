@@ -1,4 +1,4 @@
-package com.alexandermaynard_comp304lab3_ex1.Database
+package com.alexandermaynard_comp304lab3_ex1
 
 enum class Rooms(val roomNumber: Int) {
                     ROOM1(1), ROOM2(2), ROOM3(3), ROOM4(4),

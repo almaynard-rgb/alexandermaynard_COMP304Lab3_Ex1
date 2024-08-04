@@ -1,4 +1,4 @@
-package com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.nurse
+package com.alexandermaynard_comp304lab3_ex1.Database.viewmodels.patient
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -20,10 +20,10 @@ class PatientViewModel(application: Application): AndroidViewModel(application) 
     }
 
     suspend fun getPatient(patientId: Int): Patient? {
-        val deferredNurse: Deferred<Patient?> = viewModelScope.async {
+        val deferredPatient: Deferred<Patient?> = viewModelScope.async {
             patientRepo.getPatient(patientId)
         }
-        return deferredNurse.await()
+        return deferredPatient.await()
     }
 
     fun insertPatient(patient: Patient) = viewModelScope.launch(Dispatchers.IO) {

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     style="@style/activity_frame_layout_margin"
     android:background="@drawable/content_frame_border"
-    tools:context=".Patient">
+    tools:context=".PatientActivity">
 
     <!--Title for the patient activity-->
     <TextView
@@ -55,8 +55,9 @@
     <TextView
         android:id="@+id/patient_result_title"
         style="@style/regular_text_view"
-        android:text="@string/patient_result_text_prompt"
+        android:layout_marginTop="16dp"
         android:background="@drawable/sub_title_border"
+        android:text="@string/patient_result_text_prompt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/patient_id_search" />
@@ -146,17 +147,6 @@
         android:background="@drawable/edit_text_border"
         app:layout_constraintTop_toBottomOf="@+id/patient_lastname_entry" />
 
-    <!--Entry for the ID of the nurse who took care of the patient-->
-    <EditText
-        android:id="@+id/patient_nurse_id"
-        style="@style/right_aligned_edit_text"
-        android:autofillHints="enter the ID for the patient's nurse"
-        android:hint="@string/patient_nurse_id_hint"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/edit_text_border"
-        app:layout_constraintTop_toBottomOf="@+id/patient_department_entry" />
-
     <!--Entry for the patient's room-->
     <EditText
         android:id="@+id/patient_room_entry"
@@ -166,7 +156,7 @@
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/edit_text_border"
-        app:layout_constraintTop_toBottomOf="@+id/patient_nurse_id" />
+        app:layout_constraintTop_toBottomOf="@+id/patient_department_entry" />
 
     <!--Button to submit the new patient information-->
     <Button

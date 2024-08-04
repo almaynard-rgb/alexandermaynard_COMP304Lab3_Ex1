@@ -49,7 +49,7 @@
 
     <!--Button to search for a patient by id-->
     <Button
-        android:id="@+id/search_patient_btn"
+        android:id="@+id/search_patient_test_btn"
         style="@style/regular_button"
         android:layout_marginTop="26dp"
         android:layout_marginEnd="26dp"
@@ -66,14 +66,35 @@
         android:background="@drawable/sub_title_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_patient_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/search_patient_test_btn" />
 
-    <!--Recyclerview to display the desired tests for a patient-->
+    <!--Recyclerview to display the desired tests for a patient
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/house_type_recycler_view"
+        android:id="@+id/tests_result_recycler_view"
         style="@style/recycler_view_widget"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_test_for_patient_results_title" />
+        app:layout_constraintTop_toBottomOf="@id/search_test_for_patient_results_title" />-->
+
+    <ScrollView
+        android:id="@+id/tests_results_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_test_for_patient_results_title">
+        <TextView
+            android:id="@+id/tests_results_textview"
+            style="@style/regular_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_patient_test_btn" />
+    
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

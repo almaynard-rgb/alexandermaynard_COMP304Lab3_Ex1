@@ -28,7 +28,7 @@
     <string name="patient_firstname_hint">Enter the patient firstname</string>
     <string name="patient_lastname_hint">Enter the patient lastname</string>
     <string name="patient_department_hint">Enter the patient department</string>
-    <string name="patient_nurse_id_hint">Enter the ID for the patient nurse</string>
+    <!--<string name="patient_nurse_id_hint">Enter the ID for the patient nurse</string>-->
     <string name="patient_room_hint">Enter the room for the patient</string>
 
     <!--test page specific strings-->
@@ -36,11 +36,11 @@
     <string name="test_id_hint">Enter the test ID</string>
     <string name="test_patient_id_hint">Patient for the test (patient ID)</string>
     <string name="test_nurse_id_hint">Nurse assigned (nurse ID)</string>
-    <string name="patient_bpl_hint">Enter the patient BPL</string>
-    <string name="patient_bhp_hint">Enter the patient BHP</string>
-    <string name="patient_temp_hint">Enter the patient temperature</string>
-    <string name="patient_blood_type_hint">Enter the patient blood type</string>
-    <string name="patient_blood_sugar_level_hint">Enter the patient blood sugar level</string>
+    <string name="patient_bpl_hint">Patient BPL (top_val.bottom_val format)</string>
+    <string name="patient_bph_hint">Patient BPH (true or false)</string>
+    <string name="patient_temp_hint">Patient temperature (Celsius)</string>
+    <string name="patient_blood_type_hint">Patient blood type</string>
+    <string name="patient_blood_sugar_level_hint">Patient blood sugar level (mg/dL)</string>
 
     <!--multi-use strings-->
     <string name="patient_id_hint">Enter the patient ID</string>
