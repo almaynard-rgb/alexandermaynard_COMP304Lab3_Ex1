@@ -47,6 +47,7 @@
     <string name="submit_btn_text">Submit</string>
     <string name="enter_data_btn_text">Enter Data</string>
     <string name="search_btn_text">Search</string>
+    <string name="login_button_content_description">Login button with a key image</string>
 
 
     <!--view test info specific strings-->

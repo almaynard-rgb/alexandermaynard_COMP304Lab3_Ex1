@@ -9,6 +9,13 @@
         <item name="android:layout_marginBottom">6dp</item>
         <item name="android:textSize">12sp</item>
     </style>
+    <!--Styles for login image buttons-->
+    <style name="login_image_button">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
     <!--Styles for regular text views-->
     <style name="regular_text_view">
         <item name="android:layout_width">wrap_content</item>

@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -57,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
         val nursePasswordTextView = findViewById<EditText>(R.id.nurse_password_entry).text
 
         //reference the login and password buttons.
-        val loginBtn = findViewById<Button>(R.id.login_btn)
+        val loginBtn = findViewById<ImageButton>(R.id.login_btn)
         val logoutBtn = findViewById<Button>(R.id.logout_btn)
 
 

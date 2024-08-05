@@ -34,11 +34,13 @@
         app:layout_constraintVertical_bias="0.331"
         app:srcCompat="@drawable/stethoscope" />
 
-    <!--Button to go to the login screen activity for nurses-->
-    <Button
+
+    <!--Image Button to go to the login screen activity for nurses-->
+    <ImageButton
         android:id="@+id/to_login_page_btn"
-        style="@style/regular_button"
-        android:text="@string/to_login_page_btn_text"
+        style="@style/login_image_button"
+        android:background="@drawable/login_btn_image"
+        android:contentDescription="@string/login_button_content_description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

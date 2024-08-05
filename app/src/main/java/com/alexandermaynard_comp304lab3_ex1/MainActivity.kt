@@ -6,7 +6,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         testViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(application))[TestViewModel::class.java]
 
         //reference the login button.
-        val loginBtn = findViewById<Button>(R.id.to_login_page_btn)
+        val loginBtn = findViewById<ImageButton>(R.id.to_login_page_btn)
 
         //login onclick listener
         loginBtn.setOnClickListener {
