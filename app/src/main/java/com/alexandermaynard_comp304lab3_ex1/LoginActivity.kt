@@ -3,7 +3,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
@@ -71,20 +70,21 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 //otherwise launch a coroutine to try login
                 lifecycleScope.launch {
-                    try {
-                        //get the nurse id and apply it the editLoggedInNurseId shared pref
+                    //check if the login credentials do not match
+                    if(nurseViewModel.getNurse(nurseLoginTextView.toString().toInt(), nursePasswordTextView.toString()) == null) {
+                        //if they don't...
+                        //toast to let the user know to try again
+                        Toast.makeText(applicationContext, "Login failed, check your credentials", Toast.LENGTH_LONG).show()
+                    }
+                    //else they are correct so...
+                    else {
+                        //...get the nurse id and apply it the editLoggedInNurseId shared pref
                         editLoggedInNurseId.putString("loggedInNurseId", nurseViewModel.getNurse(nurseLoginTextView.toString().toInt(), nursePasswordTextView.toString())?.nurseId.toString()).commit()
                         //toast to alert for proper login
                         Toast.makeText(applicationContext, "Login success!", Toast.LENGTH_LONG).show()
                         //intent to go back to the Main Activity
                         val i = Intent(applicationContext, MainActivity::class.java)
                         startActivity(i)
-                        //catch exception if getNurse fails
-                    } catch (e: Exception) {
-                        //log the error
-                        Log.e("Login Exception", "Please check your password or username and make sure they are correct")
-                        //toast to let the user know to try again
-                        Toast.makeText(applicationContext, "Login failed, check your credentials", Toast.LENGTH_LONG).show()
                     }
                 }
             }

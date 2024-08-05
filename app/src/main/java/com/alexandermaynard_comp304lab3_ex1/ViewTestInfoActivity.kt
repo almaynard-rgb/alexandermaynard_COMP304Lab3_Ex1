@@ -74,7 +74,7 @@ class ViewTestInfoActivity : AppCompatActivity() {
                     //if there are no tests associated with the patient id passed
                 } else {
                     //toast to let the user know that the test Id entered does not exist
-                    Toast.makeText(applicationContext, "The Test Id you entered does not exist", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "The Patient Id you entered does not exist", Toast.LENGTH_LONG).show()
                 }
             }
         }

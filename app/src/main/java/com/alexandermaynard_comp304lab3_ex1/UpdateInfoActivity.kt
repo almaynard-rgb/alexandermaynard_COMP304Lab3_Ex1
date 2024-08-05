@@ -2,7 +2,6 @@ package com.alexandermaynard_comp304lab3_ex1
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
@@ -62,13 +61,14 @@ class UpdateInfo : AppCompatActivity() {
         //click listener for the searchBtn
         searchBtn.setOnClickListener {
             lifecycleScope.launch {
-                try {
+                //if successful
+                if (patientViewModel.getPatient(searchEditText.text.toString().toInt()) != null) {
                     val retrievedPatientFromRoom = patientViewModel.getPatient(searchEditText.text.toString().toInt())
                     if(searchEditText.text.toString().toInt() == retrievedPatientFromRoom?.patientId) {
                         searchResultText.text = retrievedPatientFromRoom.toString()
                     }
-                } catch (e: Exception) {
-                    Log.e("Room Exception", e.toString())
+                } else {
+                    //tell user the proper no patient exists message
                     Toast.makeText(applicationContext, "Patient does not exist in registry", Toast.LENGTH_LONG).show()
                 }
             }
